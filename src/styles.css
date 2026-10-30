@@ -142,3 +142,48 @@
     color: var(--color-foreground);
   }
 }
+
+/* ===== TeleYaar design system ===== */
+@theme inline {
+  --color-plum: var(--plum);
+  --color-shell: var(--shell);
+  --color-shell-edge: var(--shell-edge);
+  --color-lcd: var(--lcd);
+  --color-lcd-text: var(--lcd-text);
+  --color-key: var(--key);
+  --color-key-edge: var(--key-edge);
+  --color-key-muted: var(--key-muted);
+  --color-hangup: var(--hangup);
+  --color-hangup-foreground: var(--hangup-foreground);
+  --color-panel: var(--panel);
+  --color-busy: var(--busy);
+  --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
+  --font-lcd: "VT323", ui-monospace, monospace;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+:root {
+  --plum: oklch(0.24 0.06 340);
+  --shell: oklch(0.93 0.04 80);
+  --shell-edge: oklch(0.82 0.06 70);
+  --lcd: oklch(0.17 0.02 150);
+  --lcd-text: oklch(0.88 0.22 145);
+  --key: oklch(0.985 0.012 85);
+  --key-edge: oklch(0.74 0.06 65);
+  --key-muted: oklch(0.88 0.03 75);
+  --hangup: oklch(0.58 0.2 27);
+  --hangup-foreground: oklch(0.99 0 0);
+  --panel: oklch(0.97 0.025 90);
+  --busy: oklch(0.93 0.06 25);
+  --foreground: oklch(0.25 0.05 40);
+  --muted-foreground: oklch(0.45 0.05 50);
+  --primary: oklch(0.62 0.16 45);
+  --primary-foreground: oklch(0.99 0 0);
+}
+body { font-family: var(--font-display); background-color: var(--plum); overflow-x: hidden; }
+@utility shadow-phone { box-shadow: 0 30px 60px -20px oklch(0 0 0 / 0.6), inset 0 2px 0 oklch(1 0 0 / 0.6); }
+@utility shadow-key { box-shadow: 0 4px 0 var(--key-edge), 0 6px 10px -4px oklch(0 0 0 / 0.25); }
+@utility lcd-glow { text-shadow: 0 0 6px color-mix(in oklab, var(--lcd-text) 70%, transparent); box-shadow: inset 0 0 18px oklch(0 0 0 / 0.8); }
+@keyframes key-flash { 0% { filter: brightness(1.35); transform: scale(0.92); } 100% { filter: none; transform: scale(1); } }
+@utility animate-key-flash { animation: key-flash 220ms ease-out; }
+@keyframes eq { 0%,100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+@utility animate-eq { animation: eq 0.9s ease-in-out infinite; transform-origin: bottom; }
